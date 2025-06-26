@@ -1,33 +1,29 @@
+@if (profile) {
 <div class="profile-card">
   <div class="avatar-name">
     <img
-      src="https://picsum.photos/seed/picsum/200/300"
+      [src]="profile.avatarUrl | imgUrl"
       alt="avatar"
       class="profile-card__avatar"
     />
     <div class="profile-card__name">
-      <strong>Райан Гослинг</strong>
-      <span>ryan.gosling</span>
+      <strong>{{ profile.firstName }} {{ profile.lastName }}</strong>
+      <span>{{ profile.username }}</span>
     </div>
   </div>
 
   <div class="profile-card__description">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-    assumenda hic quam? Ipsa quos voluptatibus ab. Dicta, assumenda.
-    Consequuntur provident aut quas quisquam? Optio asperiores nobis est modi
-    atque molestias.
+    {{ profile.description }}
   </div>
 
   <div class="profile-card__tags">
-    <div class="skill-tag">Angular</div>
-    <div class="skill-tag">Typescript</div>
-    <div class="skill-tag">Javascript</div>
-    <div class="skill-tag">React</div>
-    <div class="skill-tag">Frontend</div>
-    <div class="skill-tag">CSS</div>
+    @for (tag of profile.stack; track tag) {
+    <div class="skill-tag">{{ tag }}</div>
+    }
   </div>
 
   <div class="profile-card__action-btns">
     <button class="btn">Подписаться</button>
   </div>
 </div>
+}
